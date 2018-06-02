@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+    <title>Socket.IO chat</title>
+</head>
+<body>
+<div>
+    <form id="usernameForm" action="">
+        <p id="usernameField"></p>
+        <input id="usernameInput" autocomplete="off"/>
+        <button>Apply</button>
+    </form>
+</div>
+<div>
+    <ul id="messages"></ul>
+    <form id="messageForm" action="">
+        <input id="message" autocomplete="off"/>
+        <button>Send</button>
+    </form>
+</div>
+<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
