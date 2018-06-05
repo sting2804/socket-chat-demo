@@ -1,11 +1,9 @@
 $(document).ready(function () {
-    var socket = io(),
+    const socket = io(),
         messageForm = $('#messageForm'),
         messageField = $('#message'),
         messagesList = $('#messages'),
-        usernameField = $('#usernameField'),
-        usernameInput = $('#usernameInput'),
-        usernameForm = $('#usernameForm')
+        usernameLabel = $('#username')
     ;
 
     messageForm.submit(function () {
@@ -13,19 +11,16 @@ $(document).ready(function () {
         messageField.val('');
         return false;
     });
-    usernameForm.submit(function () {
-        $.cookie('chat_username', usernameInput.val());
-        usernameField.val(usernameInput.val());
-        return false;
-    });
     socket.on('connect', function () {
+        console.log("connect event");
         if ($.cookie('chat_username')) {
             username = $.cookie('chat_username')
         } else {
             username = 'Anonymous ' + (new Date()).getTime()
         }
         $.cookie('chat_username', username);
-        usernameField.val(username);
+        usernameLabel.text(username);
+        console.log("username: "+username);
     });
     socket.on('chat message', function (msg) {
         messagesList.append($('<li>').text(msg));
